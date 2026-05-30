@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Évaluation – Chapitre 2 – Les molécules et les solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#f0ece4;font-family:'Source Sans 3',sans-serif;font-size:15px;color:#1a1a1a;padding:28px 16px 60px}
+.page{background:#fff;max-width:820px;margin:0 auto;padding:44px 52px 56px;box-shadow:0 2px 20px rgba(0,0,0,.12)}
+@media(max-width:620px){.page{padding:22px 16px 36px}}
+
+/* ── En-tête ── */
+.exam-header{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:14px;border-bottom:2.5px solid #1a1a1a;margin-bottom:22px}
+.header-left h1{font-family:'Source Serif 4',serif;font-weight:700;font-size:19px;line-height:1.25}
+.header-left p{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#666;margin-top:3px}
+.eval-pill{background:#1a1a1a;color:#fff;font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding:3px 12px;display:inline-block}
+.total-box{font-family:'Source Serif 4',serif;font-size:26px;font-weight:700;border:2px solid #1a1a1a;padding:3px 16px;margin-top:7px;display:inline-block}
+
+/* ── Infos élève ── */
+.student-info{display:flex;gap:28px;margin-bottom:20px;padding-bottom:13px;border-bottom:1px solid #ccc;flex-wrap:wrap}
+.info-field{flex:1;min-width:110px}
+.info-field label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#888;display:block;margin-bottom:3px}
+.info-field input{width:100%;border:none;border-bottom:1.5px solid #bbb;padding:4px 2px;font-size:14px;font-family:'Source Sans 3',sans-serif;background:transparent;outline:none}
+.info-field input:focus{border-bottom-color:#1a1a1a}
+
+/* ── Progression ── */
+.prog-wrap{margin-bottom:24px}
+.prog-top{display:flex;justify-content:space-between;font-size:11px;color:#888;font-weight:600;margin-bottom:5px}
+.prog-bar{height:4px;background:#e8e4dc;border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:#1a1a1a;border-radius:2px;width:0%;transition:width .4s}
+
+/* ── Sections ── */
+.section-heading{font-family:'Source Serif 4',serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;border-bottom:2px solid #1a1a1a;padding-bottom:5px;margin:32px 0 18px}
+
+/* ── Question ── */
+.question{margin-bottom:26px}
+.q-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.q-num{flex-shrink:0;width:25px;height:25px;border-radius:50%;background:#1a1a1a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;font-family:'Source Serif 4',serif}
+.q-text{flex:1;font-size:14.5px;line-height:1.55}
+.q-pts{flex-shrink:0;font-size:11.5px;font-weight:700;border:1.5px solid #bbb;padding:1px 8px;color:#555}
+
+/* ── Choix multiples ── */
+.choices{padding-left:35px;display:flex;flex-direction:column;gap:6px;margin-top:5px}
+.ch{display:flex;align-items:flex-start;gap:8px;padding:6px 9px;border-radius:3px;border:1px solid transparent;cursor:pointer;font-size:14px;line-height:1.45;user-select:none;transition:background .1s,border-color .1s}
+.ch:hover{background:#f5f2ec;border-color:#ccc}
+.ch input[type=radio]{appearance:none;width:15px;height:15px;border-radius:50%;border:1.5px solid #999;flex-shrink:0;margin-top:2px;cursor:pointer;transition:all .1s}
+.ch input:checked{background:#1a1a1a;border-color:#1a1a1a;box-shadow:inset 0 0 0 3px #fff}
+.cl{font-weight:700;font-size:12px;color:#666;flex-shrink:0;min-width:14px;margin-top:1px}
+.show-ans .ch.is-ok{background:#e8f5e9;border-color:#4caf50}
+.show-ans .ch.is-bad{background:#ffebee;border-color:#ef5350}
+
+/* ── pH bar ── */
+.ph-bar-wrap{margin:12px 0 8px 35px;overflow-x:auto}
+.ph-bar{display:flex;border-radius:3px;overflow:hidden;height:28px;min-width:560px}
+.ph-cell{flex:1;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:rgba(0,0,0,.6)}
+.ph-ind-wrap{margin:6px 0 10px 35px;display:flex;gap:0;min-width:560px;border:1px solid #ddd;border-radius:3px;overflow:hidden}
+.ph-ind-cell{flex:1;height:22px;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;color:rgba(0,0,0,.65)}
+
+/* ── Tableau de données ── */
+.dt{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0 12px 35px}
+.dt th{background:#f5f2ec;border:1px solid #ccc;padding:7px 10px;font-weight:700;font-size:11.5px;text-align:center}
+.dt th:first-child{text-align:left}
+.dt td{border:1px solid #ddd;padding:7px 10px;text-align:center;vertical-align:middle}
+.dt td:first-child{text-align:left;font-weight:600}
+
+/* ── Sélecteurs ── */
+.sel-wrap{padding-left:35px;margin-top:8px}
+.sq{margin-bottom:10px}
+.sql{font-size:13.5px;margin-bottom:4px}
+.sql b{font-weight:700}
+select.asel{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%23777' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 10px center;border:1.5px solid #bbb;border-radius:3px;padding:7px 30px 7px 10px;font-family:'Source Sans 3',sans-serif;font-size:13px;color:#1a1a1a;cursor:pointer;transition:border-color .1s}
+select.asel:focus{outline:none;border-color:#1a1a1a}
+
+/* ── Champ calcul ── */
+.calc-wrap{padding-left:35px;margin-top:8px}
+.calc-step{background:#f8f6f2;border:1px solid #e0ddd8;border-radius:4px;padding:12px 14px;margin-bottom:10px}
+.calc-step-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;margin-bottom:8px}
+.calc-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13.5px;margin-bottom:6px}
+.calc-row:last-child{margin-bottom:0}
+.calc-input{border:1.5px solid #bbb;border-radius:3px;padding:5px 8px;font-family:'Source Serif 4',serif;font-size:14px;font-weight:600;text-align:center;width:90px;transition:border-color .1s,background .1s}
+.calc-input:focus{outline:none;border-color:#1a1a1a}
+.calc-input.cok{border-color:#4caf50;background:#f1faf2;color:#2e7d32}
+.calc-input.cko{border-color:#ef5350;background:#fff0f0;color:#c62828}
+.calc-unit{font-size:12px;color:#666;font-weight:600}
+.calc-result{background:#fff;border:1.5px solid #1a1a1a;border-radius:3px;padding:8px 12px;font-family:'Source Serif 4',serif;font-size:15px;font-weight:700;margin-top:4px;display:inline-block}
+
+/* ── Correction ── */
+.corr{display:none;margin-top:9px;margin-left:35px;padding:9px 12px;background:#e8f5e9;border-left:3px solid #4caf50;border-radius:0 3px 3px 0;font-size:12.5px;color:#2e7d32;line-height:1.6}
+.show-ans .corr{display:block}
+
+/* ══════════════════════════════
+   CONSTRUCTEUR D'IONS (Q14)
+══════════════════════════════ */
+.ion-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:4px}
+@media(max-width:540px){.ion-grid{grid-template-columns:1fr}}
+
+.atom-card{border:1.5px solid #ddd;border-radius:4px;overflow:hidden;transition:border-color .2s,background .2s}
+.atom-card.ac-ok{border-color:#4caf50;background:#f1faf2}
+.atom-card.ac-ko{border-color:#ef5350;background:#fff8f8}
+.ac-head{background:#f5f2ec;border-bottom:1px solid #e0ddd8;padding:8px 13px;display:flex;justify-content:space-between;align-items:center}
+.ac-title{font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:#555}
+.ac-sym{font-family:'Source Serif 4',serif;font-size:20px;font-weight:700}
+.ac-badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:10px}
+.ac-badge.pend{background:#ede9e0;color:#888}
+.ac-badge.ok{background:#e8f5e9;color:#2e7d32}
+.ac-badge.ko{background:#ffebee;color:#c62828}
+.ac-body{padding:12px;display:flex;gap:12px;align-items:flex-start}
+@media(max-width:400px){.ac-body{flex-direction:column;align-items:center}}
+.ac-ctrl{flex-shrink:0;width:140px}
+.ac-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#888;margin-bottom:4px;margin-top:9px;display:block}
+.ac-lbl:first-child{margin-top:0}
+.cou-row{display:flex;align-items:center;gap:6px}
+.cou-btn{width:27px;height:27px;border:1.5px solid #bbb;border-radius:3px;background:#fff;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .1s;color:#1a1a1a;padding:0}
+.cou-btn:hover:not(:disabled){border-color:#1a1a1a;background:#f0ece4}
+.cou-btn:disabled{opacity:.3;cursor:default}
+.cou-nb{width:28px;text-align:center;font-size:15px;font-weight:700;font-family:'Source Serif 4',serif}
+.ly-wrap{margin-top:6px}
+.ly-row{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.ly-name{font-size:11px;font-weight:700;color:#666;min-width:54px}
+.ei{width:48px;border:1.5px solid #bbb;border-radius:3px;padding:4px 6px;text-align:center;font-size:14px;font-weight:600;font-family:'Source Serif 4',serif;color:#1a1a1a;background:#fff;transition:border-color .1s}
+.ei:focus{outline:none;border-color:#1a1a1a}
+.ei.eok{border-color:#4caf50;background:#f1faf2;color:#2e7d32}
+.ei.eko{border-color:#ef5350;background:#fff0f0;color:#c62828}
+.btn-ver{margin-top:9px;width:100%;background:#1a1a1a;color:#fff;border:none;padding:7px 0;font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:12.5px;cursor:pointer;border-radius:3px;transition:background .1s}
+.btn-ver:hover{background:#333}
+.btn-eff{margin-top:4px;width:100%;background:#fff;color:#777;border:1.5px solid #ccc;padding:5px 0;font-family:'Source Sans 3',sans-serif;font-weight:600;font-size:11.5px;cursor:pointer;border-radius:3px;transition:all .1s}
+.btn-eff:hover{border-color:#1a1a1a;color:#1a1a1a}
+.ac-fb{margin-top:8px;padding:7px 9px;border-radius:3px;font-size:12px;font-weight:600;line-height:1.5;display:none}
+.ac-fb.fbok{background:#e8f5e9;border-left:3px solid #4caf50;color:#2e7d32;display:block}
+.ac-fb.fbko{background:#ffebee;border-left:3px solid #ef5350;color:#c62828;display:block}
+.ac-svg-wrap{flex:1;min-width:0;display:flex;justify-content:center;align-items:center}
+.ac-svg{width:100%;max-width:178px;height:auto}
+
+/* Ion charge badge on SVG */
+.ion-note{text-align:center;font-size:11px;font-weight:700;color:#555;margin-top:4px}
+
+/* ══════════════════════════════
+   FICHE INTERACTIF (Q15)
+══════════════════════════════ */
+.q15-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:4px}
+@media(max-width:540px){.q15-grid{grid-template-columns:1fr}}
+.fiche15{border:1.5px solid #ddd;border-radius:4px;padding:13px 15px;background:#fafaf8;transition:border-color .2s,background .2s;margin-bottom:6px}
+.fiche-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.fiche-sym15{font-family:'Source Serif 4',serif;font-size:26px;font-weight:700;color:#1a1a1a;min-width:50px}
+.fiche-titre{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#777}
+.fiche-rows{display:flex;flex-direction:column;gap:4px}
+.fiche-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:3px 0;border-bottom:1px solid #eee}
+.fiche-row:last-child{border-bottom:none}
+.fiche-key{color:#777;font-weight:600;font-size:11.5px}
+.fiche-val{font-weight:700;color:#1a1a1a;font-family:'Source Serif 4',serif;font-size:13.5px;text-align:right}
+select.asel15{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%23777' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 9px center;border:1.5px solid #bbb;border-radius:3px;padding:6px 28px 6px 9px;font-family:'Source Sans 3',sans-serif;font-size:12.5px;color:#1a1a1a;cursor:pointer;width:100%;margin-bottom:3px;transition:border-color .15s,background .15s}
+select.asel15:focus{outline:none;border-color:#1a1a1a}
+
+/* ── Submit ── */
+.submit-zone{margin-top:38px;padding:26px 30px;background:#f8f6f2;border:1.5px solid #ddd;border-radius:4px;text-align:center}
+.btn-go{background:#1a1a1a;color:#fff;border:none;padding:13px 42px;font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:15px;letter-spacing:.03em;cursor:pointer;border-radius:3px;transition:background .15s}
+.btn-go:hover{background:#333}
+#results{display:none;margin-top:22px;padding:22px;background:#fff;border:1.5px solid #ccc;border-radius:4px}
+.rs{font-family:'Source Serif 4',serif;font-size:46px;font-weight:700;line-height:1;margin-bottom:3px}
+.rl{font-size:13px;color:#777;margin-bottom:14px}
+.rbd{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:12px}
+.rbi{border:1.5px solid #ddd;border-radius:3px;padding:8px 16px;text-align:center;min-width:86px}
+.rv{font-size:20px;font-weight:700;display:block}
+.rv.g{color:#2e7d32}.rv.r{color:#c62828}.rv.y{color:#e65100}
+.rl2{font-size:10px;color:#888;font-weight:600;text-transform:uppercase}
+.rfb{font-size:15px;font-weight:700;margin:14px 0 3px;color:#1a1a1a}
+.rnote{font-size:12px;color:#888;margin-top:10px;line-height:1.6}
+.btn-rst{margin-top:14px;background:#fff;border:1.5px solid #1a1a1a;padding:9px 26px;font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:13px;cursor:pointer;border-radius:3px;transition:background .1s}
+.btn-rst:hover{background:#f0ece4}
+
+/* ── Légende couleurs atome ── */
+.leg-row{display:flex;gap:14px;flex-wrap:wrap;padding-left:0;font-size:12px;color:#666;margin-bottom:14px}
+.leg{display:flex;align-items:center;gap:5px}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- EN-TÊTE -->
+<div class="exam-header">
+  <div class="header-left">
+    <h1>Chapitre 2<br>Les molécules et les solutions</h1>
+    <p>Sciences et technologie · Évaluation ST</p>
+  </div>
+  <div style="text-align:right">
+    <div class="eval-pill">Évaluation ST</div>
+    <div class="total-box">/ 50</div>
+  </div>
+</div>
+
+<!-- Infos élève -->
+<div class="student-info">
+  <div class="info-field"><label>Nom</label><input type="text" placeholder="Ton nom…"></div>
+  <div class="info-field"><label>Date</label><input type="text" placeholder="Date…"></div>
+  <div class="info-field"><label>Groupe</label><input type="text" placeholder="Groupe…"></div>
+</div>
+
+<!-- Progression -->
+<div class="prog-wrap">
+  <div class="prog-top"><span id="prog-lbl">0 réponse</span><span id="prog-pct">0 %</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
+</div>
+
+
+<!-- ════════════════════════════
+     SECTION 1 — CHOIX MULTIPLES
+════════════════════════════ -->
+<div class="section-heading">Questions à choix multiples</div>
+
+<!-- Q1 -->
+<div class="question" id="qcard-1">
+  <div class="q-row"><div class="q-num">1</div>
+    <div class="q-text">Lequel des énoncés suivants concernant les <strong>ions</strong> est vrai ?</div>
+    <div class="q-pts">/ 2</div>
+  </div>
+  <div class="choices">
+    <label class="ch"><input type="radio" name="q1" value="A"><span class="cl">A</span>Un cation est un ion chargé négativement formé par le gain d'électrons.</label>
+    <label class="ch"><input type="radio" name="q1" value="B"><span class="cl">B</span>Un anion est un ion chargé négativement formé par le gain d'électrons.</label>
+    <label class="ch"><input type="radio" name="q1" value="C"><span class="cl">C</span>Un ion est formé lorsqu'un atome perd ou gagne des protons.</label>
+    <label class="ch"><input type="radio" name="q1" value="D"><span class="cl">D</span>Les ions ont toujours la même configuration électronique que l'atome de départ.</label>
+  </div>
+  <div class="corr">✓ Bonne réponse : <strong>B</strong> — Un anion est un ion chargé négativement. Il se forme quand un atome gagne des électrons. Un cation est chargé positivement et se forme quand un atome perd des électrons.</div>
+</div>
+
+<!-- Q2 -->
+<div class="question" id="qcard-2">
+  <div class="q-row"><div class="q-num">2</div>
+    <div class="q-text">Lequel des énoncés suivants décrit le mieux la formation de l'<strong>ion fluorure (F⁻)</strong> ?</div>
+    <div class="q-pts">/ 2</div>
+  </div>
+  <div class="choices">
+    <label class="ch"><input type="radio" name="q2" value="A"><span class="cl">A</span>L'atome de fluor a perdu 1 proton.</label>
+    <label class="ch"><input type="radio" name="q2" value="B"><span class="cl">B</span>L'atome de fluor a perdu 1 électron.</label>
+    <label class="ch"><input type="radio" name="q2" value="C"><span class="cl">C</span>L'atome de fluor a gagné 1 électron.</label>
+    <label class="ch"><input type="radio" name="q2" value="D"><span class="cl">D</span>L'atome de fluor a gagné 1 proton.</label>
+  </div>
+  <div class="corr">✓ Bonne réponse : <strong>C</strong> — Le fluor (Z=9, config 2–7) gagne 1 électron pour atteindre 8 électrons de valence comme le néon → il devient F⁻ (anion).</div>
+</div>
+
+<!-- Q3 -->
+<div class="question" id="qcard-3">
+  <div class="q-row"><div class="q-num">3</div>
+    <div class="q-text">Lequel des énoncés suivants est <strong>faux</strong> ?</div>
+    <div class="q-pts">/ 2</div>
+  </div>
+  <div class="choices">
+    <label class="ch"><input type="radio" name="q3" value="A"><span class="cl">A</span>Un électrolyte est un composé qui se sépare en ions lorsqu'il est dissous dans l'eau.</label>
+    <label class="ch"><input type="radio" name="q3" value="B"><span class="cl">B</span>Les acides, les bases et les sels sont des exemples d'électrolytes.</label>
+    <label class="ch"><input type="radio" name="q3" value="C"><span class="cl">C</span>Un non-électrolyte dissous dans l'eau produit des ions mobiles qui conduisent le courant.</label>
+    <label class="ch"><input type="radio" name="q3" value="D"><span class="cl">D</span>Une solution d'électrolyte permet le passage du courant électrique.</label>
+  </div>
+  <div class="corr">✓ Bonne réponse : <strong>C</strong> — C'est faux. Un non-électrolyte reste intact lors de la dissolution : il ne produit PAS d'ions mobiles et ne conduit pas le courant électrique.</div>
+</div>
+
+<!-- Q4 -->
+<div class="question" id="qcard-4">
+  <div class="q-row"><div class="q-num">4</div>
+    <div class="q-text">Laquelle des listes suivantes contient <strong>uniquement des électrolytes</strong> ?</div>
+    <div class="q-pts">/ 2</div>
+  </div>
+  <div class="choices">
+    <label class="ch"><input type="radio" name="q4" value="A"><span class="cl">A</span>NaCl, KOH, H₂SO₄ et HCl.</label>
+    <label class="ch"><input type="radio" name="q4" value="B"><span class="cl">B</span>CO₂, NaCl, KF et C₆H₁₂O₆ (glucose).</label>
+    <label class="ch"><input type="radio" name="q4" value="C"><span class="cl">C</span>NaCl, C₂H₅OH (éthanol), KBr et HNO₃.</label>
+    <label class="ch"><input type="radio" name="q4" value="D"><span class="cl">D</span>C₁₂H₂₂O₁₁ (saccharose), NaOH, HCl et Br₂.</label>
+  </div>
+  <div class="corr">✓ Bonne réponse : <strong>A</strong> — NaCl (sel), KOH (base), H₂SO₄ (acide) et HCl (acide) sont tous des électrolytes. Les autres listes contiennent des non-électrolytes : CO₂, glucose, éthanol, saccharose et Br₂.</div>
+</div>
+
+<!-- Q5 -->
+<div class="question" id="qcard-5">
+  <div class="q-row"><div class="q-num">5</div>
+    <div class="q-text">Laquelle des équations suivantes représente correctement une <strong>dissociation électrolytique</strong> ?</div>
+    <div class="q-pts">/ 2</div>
+  </div>
+  <div class="choices">
+    <label class="ch"><input type="radio" name="q5" value="A"><span class="cl">A</span>CaCl₂(aq) → Ca²⁺(aq) + 2 Cl⁻(aq)</label>
+    <label class="ch"><input type="radio" name="q5" value="B"><span class="cl">B</span>CaCl₂(aq) → Ca²⁺(aq) + Cl₂²⁻(aq)</label>
+    <label class="ch"><input type="radio" name="q5" value="C"><span class="cl">C</span>NaOH(aq) → Na⁻(aq) + OH⁺(aq)</label>
+    <label class="ch"><input type="radio" name="q5" value="D"><span class="cl">D</span>K₂O(aq) → 2 K⁺(aq) + O³⁻(aq)</label>
+  </div>
+  <div class="corr">✓ Bonne réponse : <strong>A</strong> — CaCl₂ donne 1 ion Ca²⁺ et 2 ions Cl⁻ séparés (pas Cl₂²⁻). Les charges doivent être conservées : 2+ + 2(1–) = 0 ✓</div>
+</div>
+
+<!-- Q6 -->
+<div class="question" id="qcard-6">
+  <div class="q-row"><div class="q-num">6</div>
+    <div class="q-text">Voici quatre composés : <strong>H₂CO₃ &nbsp;·&nbsp; Ca(OH)₂ &nbsp;·&nbsp; KBr &nbsp;·&nbsp; CH₄</strong><br>Lequel des classements suivants est correct ?</div>
+    <div class="q-pts">/ 2</div>
+  </div>
+  <table class="dt" style="margin-left:35px;width:calc(100% - 35px)">
+    <thead><tr><th></th><th>Acide</th><th>Base</th><th>Sel</th><th>Autre</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td>Ca(OH)₂</td><td>H₂CO₃</td><td>CH₄</td><td>KBr</td></tr>
+      <tr><td>B</td><td>H₂CO₃</td><td>Ca(OH)₂</td><td>CH₄</td><td>KBr</td></tr>
+      <tr><td>C</td><td>H₂CO₃</td><td>Ca(OH)₂</td><td>KBr</td><td>CH₄</td></tr>
+      <tr><td>D</td><td>CH₄</td><td>Ca(OH)₂</td><td>KBr</td><td>H₂CO₃</td></tr>
+    </tbody>
+  </table>
+  <div class="choices">
+    <label class="ch"><input type="radio" name="q6" value="A"><span class="cl">A</span>Association A</label>
+    <label class="ch"><input type="radio" name="q6" value="B"><span class="cl">B</span>Association B</label>
+    <label class="ch"><input type="radio" name="q6" value="C"><span class="cl">C</span>Association C</label>
+    <label class="ch"><input type="radio" name="q6" value="D"><span class="cl">D</span>Association D</label>
+  </div>
+  <div class="corr">✓ Bonne réponse : <strong>C</strong> — H₂CO₃ est un acide (commence par H) · Ca(OH)₂ est une base (contient OH⁻) · KBr est un sel (métal + non-métal) · CH₄ est autre (hydrocarbure, non-électrolyte).</div>
+</div>
+
+<!-- Q7 -->
+<div class="question" id="qcard-7">
+  <div class="q-row"><div class="q-num">7</div>
+    <div class="q-text">Pourquoi une solution aqueuse de <strong>glucose (C₆H₁₂O₆)</strong> ne conduit-elle pas le courant électrique ?</div>
+    <div class="q-pts">/ 2</div>
+  </div>
+  <div class="choices">
+    <label class="ch"><input type="radio" name="q7" value="A"><span class="cl">A</span>Parce que le glucose doit être solide pour conduire l'électricité.</label>
+    <label class="ch"><input type="radio" name="q7" value="B"><span class="cl">B</span>Parce que le glucose ne se dissocie pas en ions lorsqu'il est dissous dans l'eau.</label>
+    <label class="ch"><input type="radio" name="q7" value="C"><span class="cl">C</span>Parce que l'eau pure ne conduit jamais le courant électrique.</label>
+    <label class="ch"><input type="radio" name="q7" value="D"><span class="cl">D</span>Parce que le glucose est trop concentré pour permettre le passage du courant.</label>
+  </div>
+  <div class="corr">✓ Bonne réponse : <strong>B</strong> — Le glucose est un non-électrolyte : ses molécules restent entières dans l'eau. Sans ions mobiles, aucun courant ne peut circuler.</div>
+</div>
+
+<!-- Q8 -->
+<div class="question" id="qcard-8">
+  <div class="q-row"><div class="q-num">8</div>
+    <div class="q-text">Une solution a un pH de 3. Lequel des énoncés suivants est <strong>vrai</strong> ?</div>
+    <div class="q-pts">/ 2</div>
+  </div>
+  <div class="choices">
+    <label class="ch"><input type="radio" name="q8" value="A"><span class="cl">A</span>Cette solution est 100 fois plus basique qu'une solution dont le pH est 5.</label>
+    <label class="ch"><input type="radio" name="q8" value="B"><span class="cl">B</span>Cette solution est 10 000 fois plus acide qu'une solution dont le pH est 7.</label>
+    <label class="ch"><input type="radio" name="q8" value="C"><span class="cl">C</span>Cette solution est 1 000 fois plus basique qu'une solution dont le pH est 6.</label>
+    <label class="ch"><input type="radio" name="q8" value="D"><span class="cl">D</span>Cette solution est 100 fois plus acide qu'une solution dont le pH est 1.</label>
+  </div>
+  <div class="corr">✓ Bonne réponse : <strong>B</strong> — Chaque unité de pH représente un facteur 10. pH 3 vs pH 7 : différence de 4 unités → 10⁴ = 10 000 fois plus acide. pH 3 est acide (inférieur à 7).</div>
+</div>
+
+<!-- Q9 -->
+<div class="question" id="qcard-9">
+  <div class="q-row"><div class="q-num">9</div>
+    <div class="q-text">
+      On utilise deux indicateurs pour mesurer le pH d'une solution inconnue :<br>
+      la solution devient <strong>rouge</strong> en présence de méthylorange et devient <strong>rose</strong> en présence de phénolphtaléine.
+      <div style="margin:10px 0 4px;font-size:12px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.05em">Méthylorange</div>
+      <div style="display:flex;border-radius:3px;overflow:hidden;height:24px;border:1px solid #ddd;margin-bottom:8px">
+        <div style="flex:4.5;background:#e74c3c;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">Rouge (0–3,1)</div>
+        <div style="flex:1;background:#e67e22;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">Orange</div>
+        <div style="flex:9;background:#f1c40f;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#555">Jaune (&gt;4,4)</div>
+      </div>
+      <div style="margin:4px 0;font-size:12px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.05em">Phénolphtaléine</div>
+      <div style="display:flex;border-radius:3px;overflow:hidden;height:24px;border:1px solid #ddd;margin-bottom:4px">
+        <div style="flex:8.2;background:#f8f6f2;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#555">Incolore (&lt;8,2)</div>
+        <div style="flex:5.8;background:#e91e8c;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">Rose / Magenta (&gt;8,2)</div>
+      </div>
+    </div>
+    Quel énoncé décrit le mieux le pH de la solution ?
+    </div>
+    <div class="q-pts">/ 2</div>
+  </div>
+  <div class="choices">
+    <label class="ch"><input type="radio" name="q9" value="A"><span class="cl">A</span>Le pH de la solution est inférieur à 3,1.</label>
+    <label class="ch"><input type="radio" name="q9" value="B"><span class="cl">B</span>Le pH de la solution se situe entre 3,1 et 8,2.</label>
+    <label class="ch"><input type="radio" name="q9" value="C"><span class="cl">C</span>Le pH de la solution est supérieur à 8,2.</label>
+    <label class="ch"><input type="radio" name="q9" value="D"><span class="cl">D</span>Le pH de la solution est exactement 7.</label>
+  </div>
+  <div class="corr">✓ Bonne réponse : <strong>C</strong> — Rouge en méthylorange indique pH &lt; 3,1. MAIS rose en phénolphtaléine indique pH &gt; 8,2. Ces deux résultats ne peuvent pas être vrais en même temps pour une seule solution. La couleur rose de la phénolphtaléine indique que le pH est supérieur à 8,2 → la solution est basique.</div>
+</div>
+
+<!-- Q10 -->
+<div class="question" id="qcard-10">
+  <div class="q-row"><div class="q-num">10</div>
+    <div class="q-text">
+      Le tableau suivant montre les variations de couleur d'un indicateur acidobasique.
+      <div style="overflow-x:auto;margin:10px 0">
+        <div style="min-width:500px">
+          <div style="display:flex;border:1px solid #ccc;border-radius:3px;overflow:hidden;margin-bottom:4px">
+            <div style="width:90px;background:#f5f2ec;border-right:1px solid #ccc;padding:5px 8px;font-size:11px;font-weight:700">Échelle pH</div>
+            <div style="flex:1;display:flex">
+              <div style="flex:1;text-align:center;padding:5px 0;font-size:10px;font-weight:700;color:#555;border-right:1px solid #eee">0</div>
+              <div style="flex:1;text-align:center;padding:5px 0;font-size:10px;font-weight:700;color:#555;border-right:1px solid #eee">2</div>
+              <div style="flex:1;text-align:center;padding:5px 0;font-size:10px;font-weight:700;color:#555;border-right:1px solid #eee">4</div>
+              <div style="flex:1;text-align:center;padding:5px 0;font-size:10px;font-weight:700;color:#555;border-right:1px solid #eee">6</div>
+              <div style="flex:1;text-align:center;padding:5px 0;font-size:10px;font-weight:700;color:#555;border-right:1px solid #eee">8</div>
+              <div style="flex:1;text-align:center;padding:5px 0;font-size:10px;font-weight:700;color:#555;border-right:1px solid #eee">10</div>
+              <div style="flex:1;text-align:center;padding:5px 0;font-size:10px;font-weight:700;color:#555;border-right:1px solid #eee">12</div>
+              <div style="flex:1;text-align:center;padding:5px 0;font-size:10px;font-weight:700;color:#555">14</div>
+            </div>
+          </div>
+          <div style="display:flex;border:1px solid #ccc;border-radius:3px;overflow:hidden">
+            <div style="width:90px;background:#f5f2ec;border-right:1px solid #ccc;padding:5px 8px;font-size:11px;font-weight:700">Indicateur</div>
+            <div style="flex:1;display:flex">
+              <div style="flex:5;background:#f1c40f;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#555;border-right:1px solid #ccc">Jaune</div>
+              <div style="flex:1;background:#27ae60;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;border-right:1px solid #ccc">Vert</div>
+              <div style="flex:8;background:#8e44ad;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">Violet</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      Ahmed mélange cet indicateur à trois solutions : <strong>NaOH</strong>, <strong>HCl</strong> et <strong>NaCl</strong>.<br>
+      Quel énoncé indique correctement la couleur de l'indicateur dans chaque solution ?
+    </div>
+    <div class="q-pts">/ 2</div>
+  </div>
+  <table class="dt" style="margin-left:35px;width:calc(100% - 35px)">
+    <thead><tr><th></th><th>NaOH</th><th>HCl</th><th>NaCl</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td>Jaune</td><td>Violet</td><td>Vert</td></tr>
+      <tr><td>B</td><td>Violet</td><td>Jaune</td><td>Vert</td></tr>
+      <tr><td>C</td><td>Vert</td><td>Jaune</td><td>Violet</td></tr>
+      <tr><td>D</td><td>Violet</td><td>Vert</td><td>Jaune</td></tr>
+    </tbody>
+  </table>
+  <div class="choices">
+    <label class="ch"><input type="radio" name="q10" value="A"><span class="cl">A</span>Association A</label>
+    <label class="ch"><input type="radio" name="q10" value="B"><span class="cl">B</span>Association B</label>
+    <label class="ch"><input type="radio" name="q10" value="C"><span class="cl">C</span>Association C</label>
+    <label class="ch"><input type="radio" name="q10" value="D"><span class="cl">D</span>Association D</label>
+  </div>
+  <div class="corr">✓ Bonne réponse : <strong>B</strong> — NaOH est une base forte (pH élevé &gt; 7) → Violet · HCl est un acide fort (pH bas &lt; 7) → Jaune · NaCl est un sel neutre (pH ≈ 7) → Vert (zone neutre).</div>
+</div>
+
+<!-- Q11 -->
+<div class="question" id="qcard-11">
+  <div class="q-row"><div class="q-num">11</div>
+    <div class="q-text">Une solution a une concentration de <strong>0,025 % m/V</strong>. Laquelle des concentrations suivantes est équivalente ?</div>
+    <div class="q-pts">/ 2</div>
+  </div>
+  <div class="choices">
+    <label class="ch"><input type="radio" name="q11" value="A"><span class="cl">A</span>25 mg/L</label>
+    <label class="ch"><input type="radio" name="q11" value="B"><span class="cl">B</span>2,5 mg/L</label>
+    <label class="ch"><input type="radio" name="q11" value="C"><span class="cl">C</span>250 mg/L</label>
+    <label class="ch"><input type="radio" name="q11" value="D"><span class="cl">D</span>0,25 mg/L</label>
+  </div>
+  <div class="corr">✓ Bonne réponse : <strong>C</strong> — 0,025 % m/V = 0,025 g / 100 mL = 0,025 g / 0,1 L = 0,25 g/L = 250 mg/L. Rappel : 1 % m/V = 10 g/L = 10 000 mg/L.</div>
+</div>
+
+
+<!-- ════════════════════════════
+     SECTION 2 — RÉPONSES COURTES
+════════════════════════════ -->
+<div class="section-heading">Questions à réponses courtes</div>
+
+<!-- Q12 -->
+<div class="question" id="qcard-12">
+  <div class="q-row"><div class="q-num">12</div>
+    <div class="q-text">Écris la <strong>formule ionique la plus probable</strong> des éléments suivants (ex. : Na⁺, Cl⁻).</div>
+    <div class="q-pts">/ 4</div>
+  </div>
+  <div class="sel-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div class="sq"><div class="sql"><b>a)</b> Potassium (K, Z=19, famille I A) :</div>
+      <select class="asel" name="q12a"><option value="">— Choisir —</option>
+        <option value="K1p">K⁺</option><option value="K2p">K²⁺</option>
+        <option value="K1m">K⁻</option><option value="K2m">K²⁻</option>
+      </select></div>
+    <div class="sq"><div class="sql"><b>b)</b> Oxygène (O, Z=8, famille VI A) :</div>
+      <select class="asel" name="q12b"><option value="">— Choisir —</option>
+        <option value="O1p">O⁺</option><option value="O2p">O²⁺</option>
+        <option value="O1m">O⁻</option><option value="O2m">O²⁻</option>
+      </select></div>
+    <div class="sq"><div class="sql"><b>c)</b> Aluminium (Al, Z=13, famille III A) :</div>
+      <select class="asel" name="q12c"><option value="">— Choisir —</option>
+        <option value="Al1p">Al⁺</option><option value="Al2p">Al²⁺</option>
+        <option value="Al3p">Al³⁺</option><option value="Al1m">Al⁻</option>
+      </select></div>
+    <div class="sq"><div class="sql"><b>d)</b> Azote (N, Z=7, famille V A) :</div>
+      <select class="asel" name="q12d"><option value="">— Choisir —</option>
+        <option value="N1p">N⁺</option><option value="N3p">N³⁺</option>
+        <option value="N1m">N⁻</option><option value="N3m">N³⁻</option>
+      </select></div>
+  </div>
+  <div class="corr">✓ Réponses :<br>
+  <strong>a) K⁺</strong> — Famille I A : cède 1 électron (1 é de valence) · config ion = 2–8–8 (argon)<br>
+  <strong>b) O²⁻</strong> — Famille VI A : gagne 2 électrons (besoin de 2 pour compléter) · config ion = 2–8 (néon)<br>
+  <strong>c) Al³⁺</strong> — Famille III A : cède 3 électrons · config ion = 2–8 (néon)<br>
+  <strong>d) N³⁻</strong> — Famille V A : gagne 3 électrons · config ion = 2–8 (néon)</div>
+</div>
+
+<!-- Q13 -->
+<div class="question" id="qcard-13">
+  <div class="q-row"><div class="q-num">13</div>
+    <div class="q-text">Indique si l'ion formé par chaque élément adopte la configuration électronique de l'<strong>hélium, du néon, de l'argon ou du krypton</strong>.</div>
+    <div class="q-pts">/ 4</div>
+  </div>
+  <div class="sel-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div class="sq"><div class="sql"><b>a)</b> Sodium (Na, Z=11) — Na⁺ :</div>
+      <select class="asel" name="q13a"><option value="">— Choisir —</option>
+        <option value="He">Hélium (2 é)</option><option value="Ne">Néon (2–8)</option>
+        <option value="Ar">Argon (2–8–8)</option><option value="Kr">Krypton (2–8–18–8)</option>
+      </select></div>
+    <div class="sq"><div class="sql"><b>b)</b> Chlore (Cl, Z=17) — Cl⁻ :</div>
+      <select class="asel" name="q13b"><option value="">— Choisir —</option>
+        <option value="He">Hélium (2 é)</option><option value="Ne">Néon (2–8)</option>
+        <option value="Ar">Argon (2–8–8)</option><option value="Kr">Krypton (2–8–18–8)</option>
+      </select></div>
+    <div class="sq"><div class="sql"><b>c)</b> Magnésium (Mg, Z=12) — Mg²⁺ :</div>
+      <select class="asel" name="q13c"><option value="">— Choisir —</option>
+        <option value="He">Hélium (2 é)</option><option value="Ne">Néon (2–8)</option>
+        <option value="Ar">Argon (2–8–8)</option><option value="Kr">Krypton (2–8–18–8)</option>
+      </select></div>
+    <div class="sq"><div class="sql"><b>d)</b> Brome (Br, Z=35) — Br⁻ :</div>
+      <select class="asel" name="q13d"><option value="">— Choisir —</option>
+        <option value="He">Hélium (2 é)</option><option value="Ne">Néon (2–8)</option>
+        <option value="Ar">Argon (2–8–8)</option><option value="Kr">Krypton (2–8–18–8)</option>
+      </select></div>
+    <div class="sq"><div class="sql"><b>e)</b> Lithium (Li, Z=3) — Li⁺ :</div>
+      <select class="asel" name="q13e"><option value="">— Choisir —</option>
+        <option value="He">Hélium (2 é)</option><option value="Ne">Néon (2–8)</option>
+        <option value="Ar">Argon (2–8–8)</option><option value="Kr">Krypton (2–8–18–8)</option>
+      </select></div>
+    <div class="sq"><div class="sql"><b>f)</b> Soufre (S, Z=16) — S²⁻ :</div>
+      <select class="asel" name="q13f"><option value="">— Choisir —</option>
+        <option value="He">Hélium (2 é)</option><option value="Ne">Néon (2–8)</option>
+        <option value="Ar">Argon (2–8–8)</option><option value="Kr">Krypton (2–8–18–8)</option>
+      </select></div>
+  </div>
+  <div class="corr">✓ Réponses :<br>
+  <strong>a) Na⁺ → Néon</strong> (Na perd 1 é : 2–8) · <strong>b) Cl⁻ → Argon</strong> (Cl gagne 1 é : 2–8–8) · <strong>c) Mg²⁺ → Néon</strong> (Mg perd 2 é : 2–8) · <strong>d) Br⁻ → Krypton</strong> (Br gagne 1 é : 2–8–18–8) · <strong>e) Li⁺ → Hélium</strong> (Li perd 1 é : 2) · <strong>f) S²⁻ → Argon</strong> (S gagne 2 é : 2–8–8)</div>
+</div>
+
+
+<!-- ════════════════════════════
+     SECTION 3 — CONSTRUCTEUR D'IONS
+════════════════════════════ -->
+<div class="section-heading">Question — Modèle de Rutherford-Bohr des ions</div>
+
+<div class="question" id="qcard-14">
+  <div class="q-row"><div class="q-num">14</div>
+    <div class="q-text">Représente les <strong>ions les plus probables</strong> des éléments suivants à l'aide du modèle de Rutherford-Bohr.<br>
+    <span style="font-size:13px;color:#666">Entre le nombre de couches et les électrons par couche de l'<strong>ion</strong> (pas de l'atome). Le schéma se construit en temps réel.</span></div>
+    <div class="q-pts">/ 4</div>
+  </div>
+  <div class="leg-row" style="padding-left:0;margin-top:8px">
+    <span class="leg"><span class="leg-dot" style="background:#2c3e7a"></span>Noyau (p+)</span>
+    <span class="leg"><span class="leg-dot" style="background:#c0392b"></span>Couche 1</span>
+    <span class="leg"><span class="leg-dot" style="background:#e67e22"></span>Couche 2</span>
+    <span class="leg"><span class="leg-dot" style="background:#27ae60"></span>Couche 3</span>
+  </div>
+  <!-- 4 ion cards : Na+(11p+,2-8), N³⁻(7p+,2-8), Mg²⁺(12p+,2-8), Cl⁻(17p+,2-8-8) -->
+  <div class="ion-grid" id="ion-grid"></div>
+  <div class="corr" style="margin-left:0;margin-top:14px">✓ Réponses (ions, pas atomes) :<br>
+  <strong>Na⁺ (11 p+)</strong> : 2 couches · 2 – 8 · l'atome Na perd 1 é de sa couche 3 → config identique au Néon<br>
+  <strong>N³⁻ (7 p+)</strong> : 2 couches · 2 – 8 · l'atome N gagne 3 é sur la couche 2 (5→8) → config identique au Néon<br>
+  <strong>Mg²⁺ (12 p+)</strong> : 2 couches · 2 – 8 · l'atome Mg perd 2 é de sa couche 3 → config identique au Néon<br>
+  <strong>Cl⁻ (17 p+)</strong> : 3 couches · 2 – 8 – 8 · l'atome Cl gagne 1 é sur la couche 3 (7→8) → config identique à l'Argon</div>
+</div>
+
+
+<!-- ════════════════════════════
+     SECTION 4 — FICHE ÉLECTROLYTE
+════════════════════════════ -->
+<div class="section-heading">Question — Électrolytes et non-électrolytes</div>
+
+<div class="question" id="qcard-15">
+  <div class="q-row"><div class="q-num">15</div>
+    <div class="q-text">Pour chaque composé, complète la <strong>fiche d'identification</strong> : type (électrolyte ou non-électrolyte), catégorie (acide / base / sel / autre) et conduit le courant (oui / non). La fiche se met à jour en temps réel.</div>
+    <div class="q-pts">/ 4</div>
+  </div>
+  <div class="q15-grid" id="q15-grid"></div>
+  <div class="corr" style="margin-left:0;margin-top:12px">✓ Réponses :<br>
+  <strong>HCl</strong> : Électrolyte · Acide · Conduit le courant : Oui<br>
+  <strong>C₁₂H₂₂O₁₁ (saccharose)</strong> : Non-électrolyte · Autre · Conduit le courant : Non<br>
+  <strong>KOH</strong> : Électrolyte · Base · Conduit le courant : Oui<br>
+  <strong>CO₂</strong> : Non-électrolyte · Autre · Conduit le courant : Non</div>
+</div>
+
+
+<!-- ════════════════════════════
+     SECTION 5 — DÉVELOPPEMENT / CALCULS
+════════════════════════════ -->
+<div class="section-heading">Questions à développement</div>
+
+<!-- Q16 -->
+<div class="question" id="qcard-16">
+  <div class="q-row"><div class="q-num">16</div>
+    <div class="q-text">
+      L'OMS recommande une concentration en nitrates inférieure à <strong>50 ppm</strong> dans l'eau potable.<br>
+      On mesure <strong>0,120 g</strong> de nitrates dans un échantillon de <strong>2 400 mL</strong> d'eau.<br>
+      Est-ce que cette concentration respecte la norme de l'OMS ? Montre ta démarche.
+    </div>
+    <div class="q-pts">/ 4</div>
+  </div>
+  <div class="calc-wrap">
+    <div class="calc-step">
+      <div class="calc-step-title">Étape 1 — Données</div>
+      <div class="calc-row">
+        <span>Masse :</span>
+        <input type="number" class="calc-input" id="c16-m" placeholder="?" step="any" oninput="calcQ16()">
+        <span class="calc-unit">mg &nbsp;(convertir g → mg)</span>
+      </div>
+      <div class="calc-row">
+        <span>Volume :</span>
+        <input type="number" class="calc-input" id="c16-v" placeholder="?" step="any" oninput="calcQ16()">
+        <span class="calc-unit">L &nbsp;(convertir mL → L)</span>
+      </div>
+    </div>
+    <div class="calc-step">
+      <div class="calc-step-title">Étape 2 — Calcul (C = m ÷ V)</div>
+      <div class="calc-row">
+        <span>C =</span>
+        <input type="number" class="calc-input" id="c16-c" placeholder="?" step="any" oninput="calcQ16()">
+        <span class="calc-unit">mg/L = ppm</span>
+      </div>
+    </div>
+    <div class="calc-step">
+      <div class="calc-step-title">Étape 3 — Conclusion</div>
+      <select class="asel" name="q16-rep" style="width:auto;min-width:300px" onchange="calcQ16()">
+        <option value="">— La norme est-elle respectée ? —</option>
+        <option value="oui">Oui, la concentration respecte la norme (&lt; 50 ppm).</option>
+        <option value="non">Non, la concentration ne respecte pas la norme (≥ 50 ppm).</option>
+      </select>
+    </div>
+    <div class="ac-fb" id="fb-q16"></div>
+  </div>
+  <div class="corr">✓ Démarche :<br>
+  m = 0,120 g = <strong>120 mg</strong> · V = 2 400 mL = <strong>2,4 L</strong><br>
+  C = 120 mg ÷ 2,4 L = <strong>50 mg/L = 50 ppm</strong><br>
+  <strong>Non</strong>, cette concentration est égale à 50 ppm, elle ne respecte PAS la norme de l'OMS (doit être <em>inférieure</em> à 50 ppm).</div>
+</div>
+
+<!-- Q17 -->
+<div class="question" id="qcard-17">
+  <div class="q-row"><div class="q-num">17</div>
+    <div class="q-text">
+      Au Canada, une boisson peut être étiquetée « sans sucre » si sa teneur en sucre est inférieure à <strong>0,050 % m/V</strong>.
+    </div>
+    <div class="q-pts">/ 8</div>
+  </div>
+  <div class="calc-wrap">
+    <!-- 17a -->
+    <div style="font-size:13.5px;font-weight:700;margin-bottom:8px"><b>a)</b> Convertis 0,050 % m/V en <strong>mg/L</strong>.</div>
+    <div class="calc-step">
+      <div class="calc-step-title">Conversion % m/V → mg/L (rappel : 1 % m/V = 10 g/L = 10 000 mg/L)</div>
+      <div class="calc-row">
+        <span>0,050 % m/V =</span>
+        <input type="number" class="calc-input" id="c17a" placeholder="?" step="any" oninput="calcQ17()">
+        <span class="calc-unit">mg/L</span>
+      </div>
+    </div>
+    <div class="ac-fb" id="fb-q17a" style="margin-bottom:14px"></div>
+
+    <!-- 17b -->
+    <div style="font-size:13.5px;font-weight:700;margin-bottom:8px"><b>b)</b> Quelle quantité de sucre (en g) contient une bouteille de <strong>500 mL</strong> avec 0,050 % m/V de sucre ?</div>
+    <div class="calc-step">
+      <div class="calc-step-title">Étape 1 — Formule : m = C % m/V × V ÷ 100</div>
+      <div class="calc-row">
+        <span>m = 0,050 × 500 ÷ 100 =</span>
+        <input type="number" class="calc-input" id="c17b" placeholder="?" step="any" oninput="calcQ17()">
+        <span class="calc-unit">g de sucre</span>
+      </div>
+    </div>
+    <div class="ac-fb" id="fb-q17b"></div>
+  </div>
+  <div class="corr">✓ Réponses :<br>
+  <strong>a)</strong> 0,050 % m/V × 10 000 = <strong>500 mg/L</strong><br>
+  <strong>b)</strong> m = (0,050 × 500) ÷ 100 = <strong>0,25 g</strong> de sucre dans 500 mL.</div>
+</div>
+
+
+<!-- BOUTON CORRECTION -->
+<div class="submit-zone">
+  <p style="color:#777;font-size:13px;margin-bottom:16px">Réponds à toutes les questions, puis clique pour la correction complète.</p>
+  <button class="btn-go" onclick="corriger()">Corriger mon examen →</button>
+  <div id="results">
+    <div class="rs" id="rs">—</div>
+    <div class="rl">réponses auto-corrigées</div>
+    <div class="rfb" id="rfb"></div>
+    <div class="rbd">
+      <div class="rbi"><span class="rv g" id="rco">0</span><span class="rl2">Correctes</span></div>
+      <div class="rbi"><span class="rv r" id="rko">0</span><span class="rl2">Incorrectes</span></div>
+      <div class="rbi"><span class="rv y" id="rsk">0</span><span class="rl2">Sans réponse</span></div>
+    </div>
+    <p class="rnote">Les corrections s'affichent en vert sous chaque question.<br>Q14, Q15, Q16 et Q17 sont incluses dans la correction automatique.</p>
+    <button class="btn-rst" onclick="recommencer()">↺ Recommencer</button>
+  </div>
+</div>
+
+</div><!-- /.page -->
+
+<script>
+/* ══════════════════════════════════
+   CORRIGÉ Q1–Q13
+══════════════════════════════════ */
+var REP={
+  q1:'B', q2:'C', q3:'C', q4:'A', q5:'A',
+  q6:'C', q7:'B', q8:'B', q9:'C', q10:'B', q11:'C',
+  q12a:'K1p', q12b:'O2m', q12c:'Al3p', q12d:'N3m',
+  q13a:'Ne',  q13b:'Ar',  q13c:'Ne',   q13d:'Kr',
+  q13e:'He',  q13f:'Ar'
+};
+var AUTO=Object.keys(REP);
+var QCM=['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','q11'];
+
+/* Progression */
+function majProg(){
+  var n=0;
+  document.querySelectorAll('input[type=radio]:checked').forEach(function(){n++;});
+  document.querySelectorAll('select.asel').forEach(function(s){if(s.value)n++;});
+  var tot=32,p=Math.min(100,Math.round(n/tot*100));
+  document.getElementById('prog-fill').style.width=p+'%';
+  document.getElementById('prog-lbl').textContent=n+' réponse'+(n>1?'s':'');
+  document.getElementById('prog-pct').textContent=p+' %';
+}
+document.addEventListener('change',majProg);
+document.addEventListener('input',majProg);
+
+function val(n){
+  var r=document.querySelector('input[name="'+n+'"]:checked');
+  if(r)return r.value;
+  var s=document.querySelector('select[name="'+n+'"]');
+  if(s&&s.value)return s.value;
+  return null;
+}
+
+/* ══ CORRECTION GLOBALE ══ */
+function corriger(){
+  var ok=0,ko=0,vd=0;
+  AUTO.forEach(function(q){
+    var v=val(q);if(!v){vd++;return;}
+    if(v===REP[q])ok++;else ko++;
+  });
+  QCM.forEach(function(q){
+    document.querySelectorAll('input[name="'+q+'"]').forEach(function(r){
+      var l=r.closest('.ch');
+      if(r.value===REP[q])l.classList.add('is-ok');
+      else if(r.checked)l.classList.add('is-bad');
+    });
+  });
+  var grp={
+    'qcard-1':['q1'],'qcard-2':['q2'],'qcard-3':['q3'],
+    'qcard-4':['q4'],'qcard-5':['q5'],'qcard-6':['q6'],
+    'qcard-7':['q7'],'qcard-8':['q8'],'qcard-9':['q9'],
+    'qcard-10':['q10'],'qcard-11':['q11'],
+    'qcard-12':['q12a','q12b','q12c','q12d'],
+    'qcard-13':['q13a','q13b','q13c','q13d','q13e','q13f']
+  };
+  Object.keys(grp).forEach(function(id){
+    var c=document.getElementById(id);if(!c)return;
+    var res=grp[id].map(function(q){var v2=val(q);return v2?v2===REP[q]:null;});
+    if(res.indexOf(null)===-1&&res.every(Boolean))c.style.borderLeft='4px solid #4caf50';
+    else if(res.some(function(r){return r===false;}))c.style.borderLeft='4px solid #ef5350';
+  });
+  /* Q14 ions */
+  toutVerQ14();
+  /* Q15 fiches */
+  toutVerQ15();
+  /* Q16 calcul */
+  verQ16(true);
+  /* Q17 calcul */
+  verQ17(true);
+
+  document.body.classList.add('show-ans');
+  var sc14=IONS14.reduce(function(s,a){return s+(ETAT14[a.id].correct?1:0);},0);
+  var sc15=COMPOS15.reduce(function(s,c){return s+(ETAT15[c.id].correct?1:0);},0);
+  var sc16=ETAT16.correct?2:0;
+  var sc17=(ETAT17.a?1:0)+(ETAT17.b?1:0);
+  var total=ok+sc14+sc15+sc16+sc17;
+  var max=AUTO.length+4+4+2+2;
+  document.getElementById('rs').textContent=total+' / '+max;
+  document.getElementById('rco').textContent=total;
+  document.getElementById('rko').textContent=Math.max(0,max-total-vd);
+  document.getElementById('rsk').textContent=vd;
+  var pct=total/max;
+  document.getElementById('rfb').textContent=
+    pct>=.9?'🎉 Excellent ! Tu maîtrises ce chapitre.':
+    pct>=.75?'👍 Très bien ! Revois les questions manquées.':
+    pct>=.6?'📚 Continue à pratiquer !':
+    '💪 Revois tes notes et recommence !';
+  var r=document.getElementById('results');r.style.display='block';
+  setTimeout(function(){r.scrollIntoView({behavior:'smooth',block:'center'});},100);
+}
+
+function recommencer(){
+  document.querySelectorAll('input[type=radio]').forEach(function(r){r.checked=false;});
+  document.querySelectorAll('select.asel').forEach(function(s){s.selectedIndex=0;});
+  document.querySelectorAll('.ch').forEach(function(l){l.classList.remove('is-ok','is-bad');});
+  document.querySelectorAll('.question').forEach(function(c){c.style.borderLeft='';});
+  document.body.classList.remove('show-ans');
+  document.getElementById('results').style.display='none';
+  IONS14.forEach(function(a){reinitIon14(a.id);});
+  COMPOS15.forEach(function(c){reinitComp15(c.id);});
+  ['c16-m','c16-v','c16-c','c17a','c17b'].forEach(function(id){
+    var el=document.getElementById(id);if(el){el.value='';el.className='calc-input';}
+  });
+  ['q16-rep'].forEach(function(n){
+    var s=document.querySelector('[name="'+n+'"]');if(s)s.selectedIndex=0;
+  });
+  ['fb-q16','fb-q17a','fb-q17b'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.className='ac-fb';
+  });
+  ETAT16={correct:false};ETAT17={a:false,b:false};
+  majProg();window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ══════════════════════════════════
+   Q14 — CONSTRUCTEUR D'IONS
+   Ions : Na⁺ (11p+, 2-8), N³⁻ (7p+, 2-8),
+          Mg²⁺(12p+,2-8), Cl⁻(17p+,2-8-8)
+══════════════════════════════════ */
+var IONS14=[
+  {id:'nap', sym:'Na⁺', nom:'Sodium',    z:11, charge:'1+', config:[2,8]},
+  {id:'n3m', sym:'N³⁻', nom:'Azote',     z:7,  charge:'3−', config:[2,8]},
+  {id:'mg2p',sym:'Mg²⁺',nom:'Magnésium', z:12, charge:'2+', config:[2,8]},
+  {id:'cl1m',sym:'Cl⁻', nom:'Chlore',    z:17, charge:'1−', config:[2,8,8]}
+];
+var CCOL14=['#c0392b','#e67e22','#27ae60'];
+var ETAT14={};
+IONS14.forEach(function(a){ETAT14[a.id]={couches:1,electrons:[0],verifie:false,correct:false};});
+
+function buildQ14(){
+  var grid=document.getElementById('ion-grid');
+  if(!grid)return;
+  grid.innerHTML='';
+  IONS14.forEach(function(a){
+    var d=document.createElement('div');
+    d.className='atom-card';d.id='ac14-'+a.id;
+    d.innerHTML=
+      '<div class="ac-head">'+
+        '<div><div class="ac-title">'+a.nom+'</div><div style="font-size:10.5px;color:#888;margin-top:1px">'+a.z+' p+ dans le noyau · Ion : '+a.sym+'</div></div>'+
+        '<div style="display:flex;align-items:center;gap:7px">'+
+          '<span style="font-family:serif;font-size:22px;font-weight:700">'+a.sym+'</span>'+
+          '<span class="ac-badge pend" id="badge14-'+a.id+'">En attente</span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="ac-body">'+
+        '<div class="ac-ctrl" id="ctrl14-'+a.id+'">'+
+          '<span class="ac-lbl" style="margin-top:0">Nb de couches (ion)</span>'+
+          '<div class="cou-row">'+
+            '<button class="cou-btn" onclick="modC14(\''+a.id+'\',-1)" disabled>−</button>'+
+            '<div class="cou-nb" id="nb14-'+a.id+'">1</div>'+
+            '<button class="cou-btn" onclick="modC14(\''+a.id+'\',+1)">+</button>'+
+          '</div>'+
+          '<span class="ac-lbl">Électrons par couche</span>'+
+          '<div class="ly-wrap" id="ly14-'+a.id+'"></div>'+
+          '<button class="btn-ver" onclick="ver14(\''+a.id+'\')">Vérifier ✓</button>'+
+          '<button class="btn-eff" onclick="reinitIon14(\''+a.id+'\')">↺ Effacer</button>'+
+          '<div class="ac-fb" id="fb14-'+a.id+'"></div>'+
+        '</div>'+
+        '<div class="ac-svg-wrap">'+
+          '<svg class="ac-svg" id="sv14-'+a.id+'" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"></svg>'+
+        '</div>'+
+      '</div>';
+    grid.appendChild(d);
+    rlyW14(a.id);rsvg14(a.id);
+  });
+}
+
+function modC14(id,d){
+  var e=ETAT14[id],nv=e.couches+d;
+  if(nv<1||nv>4)return;
+  while(e.electrons.length<nv)e.electrons.push(0);
+  while(e.electrons.length>nv)e.electrons.pop();
+  e.couches=nv;e.verifie=false;
+  document.getElementById('nb14-'+id).textContent=nv;
+  var btns=document.querySelectorAll('#ctrl14-'+id+' .cou-row .cou-btn');
+  btns[0].disabled=(nv<=1);btns[1].disabled=(nv>=4);
+  rlyW14(id);rsvg14(id);rbadge14(id);
+}
+
+function rlyW14(id){
+  var e=ETAT14[id],w=document.getElementById('ly14-'+id);
+  w.innerHTML='';
+  for(var i=0;i<e.couches;i++){
+    (function(idx){
+      var row=document.createElement('div');row.className='ly-row';
+      var lbl=document.createElement('span');lbl.className='ly-name';
+      lbl.textContent='Couche '+(idx+1)+'\u202f:';
+      var inp=document.createElement('input');
+      inp.type='number';inp.className='ei';inp.id='ei14-'+id+'-'+idx;
+      inp.min='0';inp.max='18';inp.value=e.electrons[idx]||'';inp.placeholder='0';
+      inp.addEventListener('input',function(){
+        ETAT14[id].electrons[idx]=parseInt(this.value)||0;
+        ETAT14[id].verifie=false;
+        this.classList.remove('eok','eko');
+        rsvg14(id);rbadge14(id);
+      });
+      row.appendChild(lbl);row.appendChild(inp);w.appendChild(row);
+    })(i);
+  }
+}
+
+function ver14(id){
+  var a=getI14(id),e=ETAT14[id],cfg=a.config,ok=true,errs=[];
+  if(e.couches!==cfg.length){ok=false;errs.push('Nombre de couches : attendu '+cfg.length+'.');}
+  var mn=Math.min(e.couches,cfg.length);
+  for(var i=0;i<mn;i++){
+    var inp=document.getElementById('ei14-'+id+'-'+i);
+    var v=e.electrons[i]||0;
+    if(v!==cfg[i]){ok=false;if(inp){inp.classList.add('eko');inp.classList.remove('eok');}
+      errs.push('Couche '+(i+1)+' : '+v+' entré(s), attendu '+cfg[i]+'.');}
+    else if(inp){inp.classList.add('eok');inp.classList.remove('eko');}
+  }
+  e.verifie=true;e.correct=ok;
+  var card=document.getElementById('ac14-'+id);
+  card.classList.remove('ac-ok','ac-ko');card.classList.add(ok?'ac-ok':'ac-ko');
+  var badge=document.getElementById('badge14-'+id);
+  badge.className='ac-badge '+(ok?'ok':'ko');
+  badge.textContent=ok?'✓ Correct':'✗ À revoir';
+  var fb=document.getElementById('fb14-'+id);
+  fb.className='ac-fb '+(ok?'fbok':'fbko');
+  fb.innerHTML=ok?'✓ Config ion : <strong>'+cfg.join(' – ')+'</strong>':
+    errs.join('<br>')+'<br><strong>Attendu : '+cfg.join(' – ')+'</strong>';
+  rsvg14(id);
+}
+
+function toutVerQ14(){IONS14.forEach(function(a){if(!ETAT14[a.id].verifie)ver14(a.id);});}
+function reinitIon14(id){
+  ETAT14[id]={couches:1,electrons:[0],verifie:false,correct:false};
+  document.getElementById('ac14-'+id).classList.remove('ac-ok','ac-ko');
+  document.getElementById('nb14-'+id).textContent='1';
+  document.getElementById('fb14-'+id).className='ac-fb';
+  var btns=document.querySelectorAll('#ctrl14-'+id+' .cou-row .cou-btn');
+  btns[0].disabled=true;btns[1].disabled=false;
+  rbadge14(id);rlyW14(id);rsvg14(id);
+}
+function rbadge14(id){
+  var b=document.getElementById('badge14-'+id);
+  b.className='ac-badge pend';b.textContent='En attente';
+  document.getElementById('ac14-'+id).classList.remove('ac-ok','ac-ko');
+}
+function rsvg14(id){
+  var a=getI14(id),e=ETAT14[id];
+  var cx=100,cy=100,rn=18,ec=27,h='';
+  for(var i=0;i<e.couches;i++){
+    var r=rn+(i+1)*ec;
+    h+='<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="#ccc" stroke-width="1" stroke-dasharray="5,3"/>';
+  }
+  h+='<circle cx="'+cx+'" cy="'+cy+'" r="'+rn+'" fill="#2c3e7a" stroke="#1a2558" stroke-width="1.5"/>';
+  h+='<text x="'+cx+'" y="'+(cy+4)+'" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="white">'+a.z+' p+</text>';
+  for(var c2=0;c2<e.couches;c2++){
+    var nb=e.electrons[c2]||0;if(nb<1)continue;
+    var r2=rn+(c2+1)*ec,col=CCOL14[c2]||'#888';
+    for(var k=0;k<nb;k++){
+      var ang=(2*Math.PI/nb)*k-Math.PI/2;
+      var ex=(cx+r2*Math.cos(ang)).toFixed(1),ey=(cy+r2*Math.sin(ang)).toFixed(1);
+      h+='<circle cx="'+ex+'" cy="'+ey+'" r="5" fill="'+col+'"/>';
+    }
+  }
+  /* Charge de l'ion */
+  h+='<rect x="2" y="2" width="40" height="18" rx="3" fill="rgba(0,0,0,.55)"/>';
+  h+='<text x="22" y="14" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="white">'+a.sym+'</text>';
+  if(e.verifie){
+    var ic=e.correct?'#4caf50':'#ef5350',tx=e.correct?'✓':'✗';
+    h+='<circle cx="170" cy="30" r="16" fill="'+ic+'" opacity=".9"/>';
+    h+='<text x="170" y="36" text-anchor="middle" font-size="16" fill="white" font-weight="bold">'+tx+'</text>';
+  }
+  document.getElementById('sv14-'+id).innerHTML=h;
+}
+function getI14(id){for(var i=0;i<IONS14.length;i++)if(IONS14[i].id===id)return IONS14[i];return null;}
+
+/* ══════════════════════════════════
+   Q15 — FICHES ÉLECTROLYTE INTERACTIVES
+══════════════════════════════════ */
+var COMPOS15=[
+  {id:'hcl',   sym:'HCl',         nom:'Acide chlorhydrique', type:'elect',  cat:'Acide', courant:'oui'},
+  {id:'sac',   sym:'C₁₂H₂₂O₁₁', nom:'Saccharose',          type:'nonelect',cat:'Autre', courant:'non'},
+  {id:'koh',   sym:'KOH',         nom:'Hydroxyde de potassium',type:'elect', cat:'Base',  courant:'oui'},
+  {id:'co2',   sym:'CO₂',         nom:'Dioxyde de carbone',  type:'nonelect',cat:'Autre', courant:'non'}
+];
+var ETAT15={};
+COMPOS15.forEach(function(c){ETAT15[c.id]={type:'',cat:'',courant:'',verifie:false,correct:false};});
+
+function buildQ15(){
+  var grid=document.getElementById('q15-grid');
+  if(!grid)return;
+  grid.innerHTML='';
+  COMPOS15.forEach(function(comp){
+    var d=document.createElement('div');
+    d.className='atom-card';d.id='ac15-'+comp.id;
+    var fiche=
+      '<div class="fiche15" id="fiche15-'+comp.id+'">'+
+        '<div class="fiche-top">'+
+          '<div class="fiche-sym15">'+comp.sym+'</div>'+
+          '<div><div class="fiche-titre">'+comp.nom+'</div></div>'+
+        '</div>'+
+        '<div class="fiche-rows">'+
+          '<div class="fiche-row"><span class="fiche-key">Type</span><span class="fiche-val" id="fv15-type-'+comp.id+'">—</span></div>'+
+          '<div class="fiche-row"><span class="fiche-key">Catégorie</span><span class="fiche-val" id="fv15-cat-'+comp.id+'">—</span></div>'+
+          '<div class="fiche-row"><span class="fiche-key">Conduit le courant</span><span class="fiche-val" id="fv15-cou-'+comp.id+'">—</span></div>'+
+        '</div>'+
+      '</div>';
+    d.innerHTML=
+      '<div class="ac-head">'+
+        '<div class="ac-title">'+comp.sym+'</div>'+
+        '<span class="ac-badge pend" id="badge15-'+comp.id+'">En attente</span>'+
+      '</div>'+
+      '<div class="ac-body" style="flex-direction:column;gap:10px">'+
+        fiche+
+        '<div style="width:100%">'+
+          '<span class="ac-lbl" style="margin-top:0">Type</span>'+
+          '<select class="asel15" onchange="majF15(\''+comp.id+'\')">'+
+            '<option value="">— Choisir —</option>'+
+            '<option value="elect">Électrolyte</option>'+
+            '<option value="nonelect">Non-électrolyte</option>'+
+          '</select>'+
+          '<span class="ac-lbl">Catégorie</span>'+
+          '<select class="asel15" onchange="majF15(\''+comp.id+'\')">'+
+            '<option value="">— Choisir —</option>'+
+            '<option value="Acide">Acide</option>'+
+            '<option value="Base">Base</option>'+
+            '<option value="Sel">Sel</option>'+
+            '<option value="Autre">Autre (non-électrolyte)</option>'+
+          '</select>'+
+          '<span class="ac-lbl">Conduit le courant électrique</span>'+
+          '<select class="asel15" onchange="majF15(\''+comp.id+'\')">'+
+            '<option value="">— Choisir —</option>'+
+            '<option value="oui">Oui</option>'+
+            '<option value="non">Non</option>'+
+          '</select>'+
+          '<button class="btn-ver" style="margin-top:9px" onclick="ver15(\''+comp.id+'\')">Vérifier ✓</button>'+
+          '<button class="btn-eff" onclick="reinitComp15(\''+comp.id+'\')">↺ Effacer</button>'+
+          '<div class="ac-fb" id="fb15-'+comp.id+'"></div>'+
+        '</div>'+
+      '</div>';
+    grid.appendChild(d);
+  });
+}
+
+function majF15(id){
+  var sels=document.querySelectorAll('#ac15-'+id+' select.asel15');
+  var typeV=sels[0]?sels[0].value:'';
+  var catV= sels[1]?sels[1].value:'';
+  var couV= sels[2]?sels[2].value:'';
+  var typeTxt=typeV===''?'—':typeV==='elect'?'Électrolyte':'Non-électrolyte';
+  var catTxt= catV||'—';
+  var couTxt= couV===''?'—':couV==='oui'?'Oui':'Non';
+  document.getElementById('fv15-type-'+id).textContent=typeTxt;
+  document.getElementById('fv15-cat-'+id).textContent=catTxt;
+  document.getElementById('fv15-cou-'+id).textContent=couTxt;
+  ETAT15[id].verifie=false;rbadge15(id);
+}
+
+function ver15(id){
+  var c=getC15(id);
+  var sels=document.querySelectorAll('#ac15-'+id+' select.asel15');
+  var tv=sels[0]?sels[0].value:'';
+  var cv=sels[1]?sels[1].value:'';
+  var couv=sels[2]?sels[2].value:'';
+  var okT=(tv===c.type),okC=(cv===c.cat),okCou=(couv===c.courant);
+  var ok=okT&&okC&&okCou;
+  /* Colorer les selects */
+  [[sels[0],okT],[sels[1],okC],[sels[2],okCou]].forEach(function(x){
+    if(!x[0])return;
+    x[0].style.borderColor=x[1]?'#4caf50':'#ef5350';
+    x[0].style.background=x[1]?'#f1faf2':'#fff0f0';
+  });
+  var fiche=document.getElementById('fiche15-'+id);
+  if(fiche){fiche.style.borderColor=ok?'#4caf50':'#ef5350';fiche.style.background=ok?'#f1faf2':'#fff8f8';}
+  ETAT15[id].verifie=true;ETAT15[id].correct=ok;
+  document.getElementById('ac15-'+id).classList.remove('ac-ok','ac-ko');
+  document.getElementById('ac15-'+id).classList.add(ok?'ac-ok':'ac-ko');
+  var badge=document.getElementById('badge15-'+id);
+  badge.className='ac-badge '+(ok?'ok':'ko');badge.textContent=ok?'✓ Correct':'✗ À revoir';
+  var errs=[];
+  if(!okT)errs.push('Type : attendu <strong>'+(c.type==='elect'?'Électrolyte':'Non-électrolyte')+'</strong>');
+  if(!okC)errs.push('Catégorie : attendu <strong>'+c.cat+'</strong>');
+  if(!okCou)errs.push('Courant : attendu <strong>'+(c.courant==='oui'?'Oui':'Non')+'</strong>');
+  var fb=document.getElementById('fb15-'+id);
+  fb.className='ac-fb '+(ok?'fbok':'fbko');
+  fb.innerHTML=ok?'✓ Parfait !':errs.join('<br>');
+}
+
+function toutVerQ15(){COMPOS15.forEach(function(c){if(!ETAT15[c.id].verifie)ver15(c.id);});}
+function reinitComp15(id){
+  ETAT15[id]={type:'',cat:'',courant:'',verifie:false,correct:false};
+  document.querySelectorAll('#ac15-'+id+' select.asel15').forEach(function(s){s.selectedIndex=0;s.style.borderColor='';s.style.background='';});
+  var fiche=document.getElementById('fiche15-'+id);
+  if(fiche){fiche.style.borderColor='';fiche.style.background='';}
+  ['fv15-type-','fv15-cat-','fv15-cou-'].forEach(function(p){var el=document.getElementById(p+id);if(el)el.textContent='—';});
+  document.getElementById('fb15-'+id).className='ac-fb';
+  rbadge15(id);
+}
+function rbadge15(id){
+  var b=document.getElementById('badge15-'+id);b.className='ac-badge pend';b.textContent='En attente';
+  document.getElementById('ac15-'+id).classList.remove('ac-ok','ac-ko');
+}
+function getC15(id){for(var i=0;i<COMPOS15.length;i++)if(COMPOS15[i].id===id)return COMPOS15[i];return null;}
+
+/* ══════════════════════════════════
+   Q16 — CALCUL NITRATES
+══════════════════════════════════ */
+var ETAT16={correct:false};
+function calcQ16(force){
+  var m=parseFloat(document.getElementById('c16-m').value);
+  var v=parseFloat(document.getElementById('c16-v').value);
+  var c=parseFloat(document.getElementById('c16-c').value);
+  var rep=document.querySelector('[name="q16-rep"]');
+  var repVal=rep?rep.value:'';
+  var okM=(Math.abs(m-120)<0.01);   /* 120 mg */
+  var okV=(Math.abs(v-2.4)<0.001);  /* 2.4 L */
+  var okC=(Math.abs(c-50)<0.01);    /* 50 ppm */
+  var okRep=(repVal==='non');       /* non, pas respectée */
+  var ok=okM&&okV&&okC&&okRep;
+  setCI('c16-m',!isNaN(m),okM);
+  setCI('c16-v',!isNaN(v),okV);
+  setCI('c16-c',!isNaN(c),okC);
+  ETAT16.correct=ok;
+  if(force||ok){
+    var fb=document.getElementById('fb-q16');
+    fb.className='ac-fb '+(ok?'fbok':'fbko');
+    fb.innerHTML=ok?'✓ Parfait ! C = 120 mg ÷ 2,4 L = <strong>50 ppm</strong> → Non, la norme n\'est pas respectée.':
+      'Vérifie : m = 120 mg · V = 2,4 L · C = 50 ppm · Conclusion : Non (= 50, pas &lt; 50).';
+  }
+}
+function verQ16(f){calcQ16(f);}
+
+/* ══════════════════════════════════
+   Q17 — CALCUL SUCRE
+══════════════════════════════════ */
+var ETAT17={a:false,b:false};
+function calcQ17(force){
+  var a=parseFloat(document.getElementById('c17a').value);
+  var b=parseFloat(document.getElementById('c17b').value);
+  var okA=(Math.abs(a-500)<0.5);   /* 500 mg/L */
+  var okB=(Math.abs(b-0.25)<0.001);/* 0,25 g */
+  ETAT17.a=okA;ETAT17.b=okB;
+  setCI('c17a',!isNaN(a),okA);
+  setCI('c17b',!isNaN(b),okB);
+  if(force||okA){
+    var fba=document.getElementById('fb-q17a');
+    fba.className='ac-fb '+(okA?'fbok':'fbko');
+    fba.innerHTML=okA?'✓ Correct ! 0,050 × 10 000 = <strong>500 mg/L</strong>':
+      'Rappel : 1 % m/V = 10 g/L = 10 000 mg/L → 0,050 × 10 000 = 500 mg/L.';
+  }
+  if(force||okB){
+    var fbb=document.getElementById('fb-q17b');
+    fbb.className='ac-fb '+(okB?'fbok':'fbko');
+    fbb.innerHTML=okB?'✓ Correct ! m = (0,050 × 500) ÷ 100 = <strong>0,25 g</strong>':
+      'Formule : m = C% m/V × V ÷ 100 = 0,050 × 500 ÷ 100 = 0,25 g.';
+  }
+}
+function verQ17(f){calcQ17(f);}
+
+function setCI(id,hasVal,correct){
+  var el=document.getElementById(id);if(!el)return;
+  if(!hasVal){el.className='calc-input';return;}
+  el.classList.remove('cok','cko');
+  el.classList.add(correct?'cok':'cko');
+}
+
+/* ══ INIT ══ */
+window.addEventListener('load',function(){buildQ14();buildQ15();});
+</script>
+</body>
+</html>
